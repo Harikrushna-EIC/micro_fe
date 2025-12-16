@@ -9,7 +9,7 @@ export default defineConfig({
     federation({
       name: "licence",
       filename: "remoteEntry.js",
-      manifest: true, // 🔑 generates mf-manifest.json
+      manifest: false, // 🔑 generates mf-manifest.json
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
