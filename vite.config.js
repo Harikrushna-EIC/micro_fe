@@ -3,12 +3,13 @@ import react from "@vitejs/plugin-react";
 import { federation } from "@module-federation/vite";
 
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
     federation({
       name: "licence",
       filename: "remoteEntry.js",
-      manifest: true,
+      manifest: true, // 🔑 generates mf-manifest.json
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
@@ -19,15 +20,6 @@ export default defineConfig({
     }),
   ],
   build: {
-    target: "esnext",
-    minify: false,
-    cssCodeSplit: false,
-    rollupOptions: {
-      output: {
-        entryFileNames: "[name].js", // Keep remoteEntry at root
-        chunkFileNames: "[name].js",
-        assetFileNames: "[name].[ext]",
-      },
-    },
+    target: "chrome89",
   },
 });
