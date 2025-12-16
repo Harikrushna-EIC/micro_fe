@@ -1,0 +1,21 @@
+{
+    "builds": [
+        {
+            "src": "vite.config.js",
+            "use": "@vercel/static-build"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/assets/(.*)",
+            "headers": {
+                "Content-Type": "application/javascript"
+            },
+            "dest": "/assets/$1"
+        },
+        {
+            "src": "/mf-manifest.json",
+            "dest": "/mf-manifest.json"
+        }
+    ]
+}
