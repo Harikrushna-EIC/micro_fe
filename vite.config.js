@@ -12,7 +12,10 @@ export default defineConfig({
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true, eager: true },
+        "react-dom": { singleton: true, eager: true },
+      },
     }),
   ],
   build: {
