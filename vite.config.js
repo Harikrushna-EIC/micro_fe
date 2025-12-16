@@ -1,25 +1,29 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { federation } from "@module-federation/vite";
+import federation from "@originjs/vite-plugin-federation";
 
 export default defineConfig({
-  base: "/",
   plugins: [
     react(),
     federation({
       name: "licence",
-      filename: "remoteEntry.js",
-      manifest: true, // 🔑 generates mf-manifest.json
+      filename: "remoteEntry.js", // Serve at root
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
-      shared: {
-        react: { singleton: true, eager: true },
-        "react-dom": { singleton: true, eager: true },
-      },
+      shared: ["react", "react-dom"],
     }),
   ],
   build: {
-    target: "chrome89",
+    target: "esnext",
+    minify: false,
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: "[name].js", // Keep remoteEntry at root
+        chunkFileNames: "[name].js",
+        assetFileNames: "[name].[ext]",
+      },
+    },
   },
 });

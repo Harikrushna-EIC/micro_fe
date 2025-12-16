@@ -2,23 +2,20 @@
     "builds": [
         {
             "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
+            "use": "@vercel/static-build"
         }
     ],
     "routes": [
         {
-            "src": "/assets/(.*)",
+            "src": "/(.*\\.js)",
             "headers": {
-                "Content-Type": "application/javascript"
+                "Content-Type": "text/javascript"
             },
-            "dest": "/assets/$1"
+            "dest": "/$1"
         },
         {
-            "src": "/mf-manifest.json",
-            "dest": "/mf-manifest.json"
+            "src": "/(.*)",
+            "dest": "/index.html"
         }
     ]
 }
