@@ -4,10 +4,10 @@ import { federation } from "@module-federation/vite";
 
 export default defineConfig({
   server: {
-    origin: "http://localhost:2004",
+    origin: "/",
     port: 2004,
   },
-  base: "http://localhost:2004/",
+  base: "/",
   plugins: [
     react(),
     federation({
