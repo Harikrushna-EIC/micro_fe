@@ -14,8 +14,8 @@ export default defineConfig({
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
       shared: {
-        react: { singleton: true, eager: true },
-        "react-dom": { singleton: true, eager: true },
+        react: { singleton: true, requiredVersion: false },
+        "react-dom": { singleton: true, requiredVersion: false },
       },
     }),
   ],
