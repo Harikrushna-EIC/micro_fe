@@ -3,13 +3,13 @@ import react from "@vitejs/plugin-react";
 import { federation } from "@module-federation/vite";
 
 export default defineConfig({
-  base: "/",
+  // base: "http://localhost:2004/",
+  base: "https://micro-fe-ashy.vercel.app/",
   plugins: [
     react(),
     federation({
       name: "licence",
-      filename: "remoteEntry.js",
-      manifest: false, // 🔑 generates mf-manifest.json
+      manifest: true, // 🔑 generates mf-manifest.json
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
