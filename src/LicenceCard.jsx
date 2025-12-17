@@ -1,6 +1,6 @@
 import LicenceDoc from "./LicenceDoc";
 
-export default function LicenceCard({ id }) {
+export default function LicenceCard({ id = 1 }) {
   return (
     <div style={{ border: "1px solid black", padding: 12 }}>
       <h3>Licence Provider dummy</h3>
