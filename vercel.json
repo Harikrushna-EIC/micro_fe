@@ -1,17 +1,22 @@
 {
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build"
-        }
-    ],
     "routes": [
         {
-            "src": "/(.*\\.js)",
+            "src": "/mf-manifest.json",
             "headers": {
-                "Content-Type": "text/javascript"
-            },
-            "dest": "/$1"
+                "Content-Type": "application/json"
+            }
+        },
+        {
+            "src": "/remoteEntry.js",
+            "headers": {
+                "Content-Type": "application/javascript"
+            }
+        },
+        {
+            "src": "/assets/(.*)",
+            "headers": {
+                "Content-Type": "application/javascript"
+            }
         },
         {
             "src": "/(.*)",
