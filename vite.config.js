@@ -8,11 +8,7 @@ export default defineConfig({
     react(),
     federation({
       name: "licence",
-      filename: "remoteEntry.js", // still needed for webpack hosts
-      library: {
-        type: "var",
-        name: "licence",
-      },
+      filename: "remoteEntry.js",
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
