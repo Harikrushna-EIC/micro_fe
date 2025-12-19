@@ -3,19 +3,22 @@ import react from "@vitejs/plugin-react";
 import { federation } from "@module-federation/vite";
 
 export default defineConfig({
-  // base: "http://localhost:2004/",
-  base: "https://micro-fe-ashy.vercel.app/",
+  base: "http://localhost:2004/",
   plugins: [
     react(),
     federation({
       name: "licence",
-      manifest: true, // 🔑 generates mf-manifest.json
+      filename: "remoteEntry.js", // still needed for webpack hosts
+      library: {
+        type: "var",
+        name: "licence",
+      },
       exposes: {
         "./LicenceCard": "./src/LicenceCard.jsx",
       },
       shared: {
-        react: { singleton: true, requiredVersion: false },
-        "react-dom": { singleton: true, requiredVersion: false },
+        react: { singleton: true, eager: true, requiredVersion: false },
+        "react-dom": { singleton: true, eager: true, requiredVersion: false },
       },
     }),
   ],

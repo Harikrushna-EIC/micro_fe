@@ -1,10 +1,32 @@
-import LicenceDoc from "./LicenceDoc";
+import { useEffect, useState } from "react";
+import "./App.css";
 
-export default function LicenceCard({ id = 1 }) {
+export default function LicenceCard({ name = "Micro Frontends", id = 1 }) {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  }, []);
   return (
-    <div style={{ border: "1px solid black", padding: 12 }}>
-      <h3>Licence Provider dummy</h3>
-      <LicenceDoc id={id} />
+    <div className="app">
+      <h3>Licence Provider {name}</h3>
+      <div className="data">
+        <p>Title: {data.title}</p>
+        <p>Body: {data.body}</p>
+        <p>Id: {data.id}</p>
+      </div>
     </div>
   );
 }
