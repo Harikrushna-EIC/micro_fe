@@ -20,6 +20,9 @@ export default defineConfig({
         react: { singleton: true, eager: true, requiredVersion: false },
         "react-dom": { singleton: true, eager: true, requiredVersion: false },
       },
+      css: {
+        inject: true,
+      },
     }),
   ],
   build: {
