@@ -4,6 +4,11 @@ import { federation } from "@module-federation/vite";
 
 export default defineConfig({
   base: "https://micro-fe-ashy.vercel.app/",
+  server: {
+    port: 2004,
+    origin: "https://micro-fe-ashy.vercel.app", // ensures correct URLs
+    cors: true,
+  },
   plugins: [
     react(),
     federation({

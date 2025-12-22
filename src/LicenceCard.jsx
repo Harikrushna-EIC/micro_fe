@@ -21,7 +21,7 @@ export default function LicenceCard({ name = "Micro Frontends", id = 1 }) {
   }, []);
   return (
     <div className="app">
-      <h3>Licence Provider on {name}</h3>
+      <h3>Licence Provider ABCJABSDBSAJKCB {name}</h3>
       <div className="data">
         <p>Title: {data.title}</p>
         <p>Body: {data.body}</p>
